@@ -4,14 +4,10 @@ export default [
   {
     input: "src/codemirror.js",
     output: {
-      banner: `// CodeMirror, copyright (c) by Marijn Haverbeke and others
-// Distributed under an MIT license: https://codemirror.net/LICENSE
-
-// This is CodeMirror (https://codemirror.net), a code editor
-// implemented in JavaScript on top of the browser's DOM.
-//
-// You can find some technical background for some of the code below
-// at http://marijnhaverbeke.nl/blog/#cm-internals .
+      banner: `// CodeMirror, copyright (c) by Marijn Haverbeke и другие
+// Распространяется по лицензии MIT: https://codemirror.net/LICENSE
+// Это CodeMirror (https://codemirror.net), редактор кода, реализованный на JavaScript поверх DOM браузера.
+// Некоторую техническую информацию о коде можно найти ниже по адресу http://marijnhaverbeke.nl/blog/#cm-internals .
 `,
       format: "umd",
       file: "lib/codemirror.js",
@@ -25,7 +21,7 @@ export default [
       format: "iife",
       file: "addon/runmode/runmode-standalone.js",
       name: "CodeMirror",
-      freeze: false, // IE8 doesn't support Object.freeze.
+      freeze: false, // IE8 не поддерживает Object.freeze.
     },
     plugins: [ buble({namedFunctionExpressions: false}) ]
   },
@@ -35,7 +31,7 @@ export default [
       format: "cjs",
       file: "addon/runmode/runmode.node.js",
       name: "CodeMirror",
-      freeze: false, // IE8 doesn't support Object.freeze.
+      freeze: false, // IE8 не поддерживает Object.freeze.
     },
     plugins: [ buble({namedFunctionExpressions: false}) ]
   },

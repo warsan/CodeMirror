@@ -8,7 +8,7 @@
     "email": "marijnh@gmail.com",
     "url": "http://marijnhaverbeke.nl"
   },
-  "description": "Full-featured in-browser code editor",
+  "description": "Полнофункциональный редактор кода в браузере",
   "license": "MIT",
   "directories": {
     "lib": "./lib"
@@ -27,7 +27,7 @@
     "puppeteer": "^1.20.0",
     "rollup": "^1.26.3"
   },
-  "bugs": "http://github.com/codemirror/CodeMirror/issues",
+  "bugs": "http://github.com/warsan/CodeMirror/issues",
   "keywords": [
     "JavaScript",
     "CodeMirror",
@@ -36,7 +36,7 @@
   "homepage": "https://codemirror.net",
   "repository": {
     "type": "git",
-    "url": "https://github.com/codemirror/CodeMirror.git"
+    "url": "https://github.com/warsan/CodeMirror.git"
   },
   "jspm": {
     "directories": {},

@@ -4,89 +4,68 @@
 - [Submitting bug reports](#submitting-bug-reports)
 - [Contributing code](#contributing-code)
 
-## Getting help
+## Получение справки
 
-Community discussion, questions, and informal bug reporting is done on the
-[discuss.CodeMirror forum](http://discuss.codemirror.net).
+Обсуждение в сообществе, вопросы и неформальное сообщение об ошибках проводится на [форуме discussion.CodeMirror](http://discuss.codemirror.net).
 
-## Submitting bug reports
+## Отправка отчетов об ошибках
 
-The preferred way to report bugs is to use the
-[GitHub issue tracker](http://github.com/codemirror/CodeMirror/issues). Before
-reporting a bug, read these pointers.
+Предпочтительный способ сообщать об ошибках - использовать [GitHub issue tracker](http://github.com/codemirror/CodeMirror/issues). 
+Прежде чем сообщить об ошибке, прочтите эти указатели.
 
-**Note:** The issue tracker is for *bugs*, not requests for help. Questions
-should be asked on the
-[discuss.CodeMirror forum](http://discuss.codemirror.net) instead.
+**Note:** Трекер проблем предназначен для *багов*, а не для запросов помощи. 
+Вопросы следует задавать на [форуме discussion.CodeMirror](http://discuss.codemirror.net).
 
-### Reporting bugs effectively
+### Эффективное информирование об ошибках
 
-- CodeMirror is maintained by volunteers. They don't owe you anything, so be
-  polite. Reports with an indignant or belligerent tone tend to be moved to the
-  bottom of the pile.
+- CodeMirror поддерживается добровольцами. Они тебе ничего не должны, так что будь вежлив. 
+  Сообщения с возмущенным или воинственным тоном, как правило, перемещаются на дно стопки.
 
-- Include information about **the browser in which the problem occurred**. Even
-  if you tested several browsers, and the problem occurred in all of them,
-  mention this fact in the bug report. Also include browser version numbers and
-  the operating system that you're on.
+- Включите информацию о **браузере, в котором возникла проблема**. 
+  Даже если вы протестировали несколько браузеров, и проблема возникла во всех из них, упомяните об этом факте в отчете об ошибке. 
+  Также укажите номера версий браузера и операционной системы, в которой вы работаете.
 
-- Mention which release of CodeMirror you're using. Preferably, try also with
-  the current development snapshot, to ensure the problem has not already been
-  fixed.
+- Упомяните, какой выпуск CodeMirror вы используете. 
+  Предпочтительно также попробовать с текущим снимком развития, чтобы убедиться, что проблема еще не исправлена.
 
-- Mention very precisely what went wrong. "X is broken" is not a good bug
-  report. What did you expect to happen? What happened instead? Describe the
-  exact steps a maintainer has to take to make the problem occur. We can not
-  fix something that we can not observe.
+- Упомяните очень точно, что пошло не так. "Х сломан" - не очень хороший отчет об ошибках. 
+  А чего ты ожидал? Что случилось вместо этого? 
+  Опишите точные шаги, которые должен предпринять сопровождающий, чтобы проблема возникла. 
+  Мы не можем исправить то, что не можем наблюдать.
 
-- If the problem can not be reproduced in any of the demos included in the
-  CodeMirror distribution, please provide an HTML document that demonstrates
-  the problem. The best way to do this is to go to
-  [jsbin.com](http://jsbin.com/ihunin/edit), enter it there, press save, and
-  include the resulting link in your bug report.
+- Если проблема не может быть воспроизведена ни в одной из демо-версий, включенных в дистрибутив CodeMirror, пожалуйста, предоставьте HTML-документ, демонстрирующий проблему. 
+  Лучший способ сделать это - зайти на [jsbin.com](http://jsbin.com/ihunin/edit), войти туда, нажать кнопку сохранить и включить полученную ссылку в сообщение об ошибке.
 
-## Contributing code
+## Вклад в код
 
-Note that we are not accepting any new addons or modes into the main
-distribution. If you've written such a module, please distribute it as
-a separate NPM package.
+Обратите внимание, что мы не принимаем никаких новых дополнений или режимов в основной дистрибутив. 
+Если вы написали такой модуль, пожалуйста, распространяйте его как отдельный пакет NPM.
 
-- Make sure you have a [GitHub Account](https://github.com/signup/free)
-- Fork [CodeMirror](https://github.com/codemirror/CodeMirror/)
-  ([how to fork a repo](https://help.github.com/articles/fork-a-repo))
-- Make your changes
-- If your changes are easy to test or likely to regress, add tests.
-  Tests for the core go into `test/test.js`, some modes have their own
-  test suite under `mode/XXX/test.js`. Feel free to add new test
-  suites to modes that don't have one yet (be sure to link the new
-  tests into `test/index.html`).
-- Follow the general code style of the rest of the project (see
-  below). Run `bin/lint` to verify that the linter is happy.
-- Make sure all tests pass. Visit `test/index.html` in your browser to
-  run them.
-- Submit a pull request
-([how to create a pull request](https://help.github.com/articles/fork-a-repo)).
-  Don't put more than one feature/fix in a single pull request.
+- Убедитесь, что у вас есть [Учетная запись GitHub](https://github.com/signup/free).
+- Fork [CodeMirror](https://github.com/codemirror/CodeMirror/) ([как форк репо](https://help.github.com/articles/fork-a-repo))
+- Делайте ваши изменения
+- Если ваши изменения легко тестируются или могут регрессировать, добавьте тесты.
+  Тесты для ядра идут в `test/test.js`, некоторые режимы имеют свой собственный набор тестов под `mode/XXX/test.js`. 
+  Не стесняйтесь добавлять новые наборы тестов в режимах, где их еще нет (не забудьте связать новые тесты в `test/index.html`).
+- Следуйте общему стилю кода остальной части проекта (см. ниже). 
+  Выполните 'bin/lint', чтобы убедиться, что linter счастлив.
+- Убедитесь, что все тесты пройдены. Посетите `test/index.html` в вашем браузере, чтобы запустить их.
+- Отправьте pull request ([как создать pull request](https://help.github.com/articles/fork-a-repo)).
+  Не помещайте более одной функции/фикса в один pull request.
 
-By contributing code to CodeMirror you
+Внося код в CodeMirror, вы
 
- - agree to license the contributed code under CodeMirror's [MIT
-   license](https://codemirror.net/LICENSE).
+ - согласиться на лицензию внесенного кода в соответствии с CodeMirror's [MIT license](https://codemirror.net/LICENSE).
+ - подтвердить, что вы имеете право вносить свой вклад и лицензировать соответствующий код.
+   (Либо вы обладаете всеми правами на код, либо правообладатель явным образом предоставил право использовать его таким образом, 
+   посредством совместимой лицензии с открытым исходным кодом или по прямому соглашению с вами).
 
- - confirm that you have the right to contribute and license the code
-   in question. (Either you hold all rights on the code, or the rights
-   holder has explicitly granted the right to use it like this,
-   through a compatible open source license or through a direct
-   agreement with you.)
+### Стандарты кодирования
 
-### Coding standards
+- 2 пробела на уровень отступов, без табуляции.
 
-- 2 spaces per indentation level, no tabs.
+- Обратите внимание, что подложка (`bin/lint`), которая запускается после каждого коммита, жалуется на неиспользуемые переменные и функции. 
+  Прикрепите их имена подчеркиванием, чтобы заглушить их.
 
-- Note that the linter (`bin/lint`) which is run after each commit
-  complains about unused variables and functions. Prefix their names
-  with an underscore to muffle it.
-
-- CodeMirror does *not* follow JSHint or JSLint prescribed style.
-  Patches that try to 'fix' code to pass one of these linters will be
-  unceremoniously discarded.
+- CodeMirror *не* следует предписанному стилю JSHint или JSLint.
+  Патчи, которые пытаются 'исправить' код для передачи одного из этих зануд, будут бесцеремонно отброшены.

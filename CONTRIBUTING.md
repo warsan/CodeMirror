@@ -1,8 +1,8 @@
 # How to contribute
 
-- [Getting help](#getting-help)
-- [Submitting bug reports](#submitting-bug-reports)
-- [Contributing code](#contributing-code)
+- [Получение справки](#getting-help)
+- [Отправка отчетов об ошибках](#submitting-bug-reports)
+- [Вклад в код](#contributing-code)
 
 ## Получение справки
 

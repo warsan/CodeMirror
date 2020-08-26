@@ -23,7 +23,7 @@ namespace = "annotatescrollbar_";
       annotation.update(matches);
 
       var annotations = cm.getWrapperElement().getElementsByClassName(annotation.options.className);
-      eq(annotations.length, expected, "Expected " + expected + " annotations on the scrollbar.")
+      eq(annotations.length, expected, "Ожидаемые " + expected + " примечания на полосе прокрутки.")
     }, {
       value: content,
       mode: "javascript",

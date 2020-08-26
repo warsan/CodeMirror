@@ -121,7 +121,7 @@ function expectFail(fn) {
     } catch(expected) {
         return;
     };
-    throw new Error("Expected to throw an error");
+    throw new Error("Ожидаемые ошибки");
 }
 
 function testVim(name, run, opts, expectedFail) {
@@ -167,9 +167,9 @@ function testVim(name, run, opts, expectedFail) {
         }
         for (var i = 0; i < arguments.length; i++) {
           var key = arguments[i];
-          // Find key in keymap and handle.
+          // Найдите ключ в раскладке клавиатуры и обработайте.
           var handled = CodeMirror.lookupKey(key, cm.getOption('keyMap'), executeHandler, cm);
-          // Record for insert mode.
+          // Запись для режима вставки.
           if (handled == "handled" && cm.state.vim.insertMode && arguments[i] != 'Esc') {
             var lastChange = CodeMirror.Vim.getVimGlobalState_().macroModeState.lastInsertModeChanges;
             if (lastChange && (key.indexOf('Delete') != -1 || key.indexOf('Backspace') != -1)) {
@@ -208,9 +208,9 @@ function testVim(name, run, opts, expectedFail) {
     }
     var helpers = {
       doKeys: doKeysFn(cm),
-      // Warning: Only emulates keymap events, not character insertions. Use
-      // replaceRange to simulate character insertions.
-      // Keys are in CodeMirror format, NOT vim format.
+      // Внимание: Только эмулирует ключевые события, а не вставки символов. 
+      // Используйте replaceRange для имитации вставки символов.
+      // Ключи находятся в формате CodeMirror, а не vim.
       doInsertModeKeys: doInsertModeKeysFn(cm),
       doEx: doExFn(cm),
       assertCursorAt: assertCursorAtFn(cm),
@@ -304,10 +304,10 @@ testJumplist('jumplist_skip_deleted_mark<c-i>',
              [1,0], [0,2]);
 
 /**
- * @param name Name of the test
- * @param keys An array of keys or a string with a single key to simulate.
- * @param endPos The expected end position of the cursor.
- * @param startPos The position the cursor should start at, defaults to 0, 0.
+ * @param name Название теста
+ * @param keys Массив ключей или строка с одним ключом для моделирования.
+ * @param endPos Ожидаемая конечная позиция курсора.
+ * @param startPos Позиция, в которой должен стартовать курсор, по умолчанию 0, 0.
  */
 function testMotion(name, keys, endPos, startPos) {
   testVim(name, function(cm, vim, helpers) {
@@ -439,29 +439,29 @@ testVim('%_skip_comment', function(cm, vim, helpers) {
   helpers.doKeys(['%']);
   helpers.assertCursorAt(0,0);
 }, {value:'(/*)*/)'});
-// Make sure that moving down after going to the end of a line always leaves you
-// at the end of a line, but preserves the offset in other cases
-testVim('Changing lines after Eol operation', function(cm, vim, helpers) {
+// Убедитесь, что движение вниз после выхода на конец линии всегда оставляет вас в конце линии,
+// но сохраняет смещение в других случаях
+testVim('Смена линий после операции Eol', function(cm, vim, helpers) {
   cm.setCursor(0,0);
   helpers.doKeys(['$']);
   helpers.doKeys(['j']);
-  // After moving to Eol and then down, we should be at Eol of line 2
+  // После перемещения в Eol, а затем вниз, мы должны быть в Eol линии 2
   helpers.assertCursorAt(new Pos(1, lines[1].length - 1));
   helpers.doKeys(['j']);
-  // After moving down, we should be at Eol of line 3
+  // После движения вниз, мы должны быть на Eol линии 3.
   helpers.assertCursorAt(new Pos(2, lines[2].length - 1));
   helpers.doKeys(['h']);
   helpers.doKeys(['j']);
-  // After moving back one space and then down, since line 4 is shorter than line 2, we should
-  // be at Eol of line 2 - 1
+  // После перемещения назад на один пробел, а затем вниз, так как строка 4 короче, 
+  // чем строка 2, мы должны быть на Eol строки 2 - 1
   helpers.assertCursorAt(new Pos(3, lines[3].length - 1));
   helpers.doKeys(['j']);
   helpers.doKeys(['j']);
-  // After moving down again, since line 3 has enough characters, we should be back to the
-  // same place we were at on line 1
+  // После повторного перемещения вниз, так как в 3-й строке достаточно символов,
+  // мы должны вернуться в то же самое место, где мы были на 1-й строке.
   helpers.assertCursorAt(new Pos(5, lines[2].length - 2));
 });
-//making sure gj and gk recover from clipping
+// чтобы убедиться, что gj и gk восстановились после обрезания
 testVim('gj_gk_clipping', function(cm,vim,helpers){
   cm.setCursor(0, 1);
   helpers.doKeys('g','j','g','j');
@@ -469,53 +469,53 @@ testVim('gj_gk_clipping', function(cm,vim,helpers){
   helpers.doKeys('g','k','g','k');
   helpers.assertCursorAt(0, 1);
 },{value: 'line 1\n\nline 2'});
-//testing a mix of j/k and gj/gk
+// тестирование смеси j/k и gj/gk
 testVim('j_k_and_gj_gk', function(cm,vim,helpers){
   cm.setSize(120);
   cm.setCursor(0, 0);
-  //go to the last character on the first line
+  // перейти к последнему персонажу в первой строке
   helpers.doKeys('$');
-  //move up/down on the column within the wrapped line
-  //side-effect: cursor is not locked to eol anymore
+  // двигаться вверх/вниз по столбцу в пределах обёрнутой линии
+  // побочный эффект: курсор больше не привязан к eol
   helpers.doKeys('g','k');
   var cur=cm.getCursor();
   eq(cur.line,0);
   is((cur.ch<176),'gk didn\'t move cursor back (1)');
   helpers.doKeys('g','j');
   helpers.assertCursorAt(0, 176);
-  //should move to character 177 on line 2 (j/k preserve character index within line)
+  // должен перейти на знак 177 во второй строке (j/k сохранить индекс символов в пределах строки)
   helpers.doKeys('j');
-  //due to different line wrapping, the cursor can be on a different screen-x now
-  //gj and gk preserve screen-x on movement, much like moveV
+  // из-за различной обертки линий, курсор может быть на другом экране-x теперь
+  // gj и gk сохраняют экран-x в движении, так же как и moveV
   helpers.doKeys('3','g','k');
   cur=cm.getCursor();
   eq(cur.line,1);
   is((cur.ch<176),'gk didn\'t move cursor back (2)');
   helpers.doKeys('g','j','2','g','j');
-  //should return to the same character-index
+  // должен вернуться к тому же символ-индексу
   helpers.doKeys('k');
   helpers.assertCursorAt(0, 176);
-},{ lineWrapping:true, value: 'This line is intentially long to test movement of gj and gk over wrapped lines. I will start on the end of this line, then make a step up and back to set the origin for j and k.\nThis line is supposed to be even longer than the previous. I will jump here and make another wiggle with gj and gk, before I jump back to the line above. Both wiggles should not change my cursor\'s target character but both j/k and gj/gk change each other\'s reference position.'});
+},{ lineWrapping:true, value: 'Эта линия имеет интенсивную длину, чтобы проверить движение gj и gk по обернутым линиям. Я начну с конца этой строки, затем сделаю шаг вверх и назад, чтобы установить происхождение для j и k.\nЭта строка должна быть еще длиннее, чем предыдущая. Я прыгну сюда и сделаю еще одно покачивание с gj и gk, прежде чем прыгну обратно на линию выше.  Оба покачивания не должны менять мой курсор\'s целевой символ, но и j/k и gj/gk меняют\'s исходное положение друг друга'});
 testVim('gj_gk', function(cm, vim, helpers) {
   cm.setSize(120);
-  // Test top of document edge case.
+  // Проверьте верхнюю часть кейса на краю документа.
   cm.setCursor(0, 4);
   helpers.doKeys('g', 'j');
   helpers.doKeys('10', 'g', 'k');
   helpers.assertCursorAt(0, 4);
 
-  // Test moving down preserves column position.
+  // Тест, перемещающийся вниз, сохраняет положение колонки.
   helpers.doKeys('g', 'j');
   var pos1 = cm.getCursor();
   var expectedPos2 = new Pos(0, (pos1.ch - 4) * 2 + 4);
   helpers.doKeys('g', 'j');
   helpers.assertCursorAt(expectedPos2);
 
-  // Move to the last character
+  // Перейти к последнему символу
   cm.setCursor(0, 0);
-  // Move left to reset HSPos
+  // Переместить влево, чтобы сбросить HSPos
   helpers.doKeys('h');
-  // Test bottom of document edge case.
+  // Проверить нижнюю часть края документа.
   helpers.doKeys('100', 'g', 'j');
   var endingPos = cm.getCursor();
   is(endingPos != 0, 'gj should not be on wrapped line 0');
@@ -598,7 +598,7 @@ testVim('paragraph_motions', function(cm, vim, helpers) {
   helpers.doKeys('}');
   helpers.assertCursorAt(7, 0);
 
-  // ip inside empty space
+  // ip внутри пустого места
   cm.setCursor(10, 0);
   helpers.doKeys('v', 'i', 'p');
   eqCursorPos(Pos(7, 0), cm.getCursor('anchor'));
@@ -610,7 +610,7 @@ testVim('paragraph_motions', function(cm, vim, helpers) {
   eqCursorPos(Pos(7, 0), cm.getCursor('anchor'));
   eqCursorPos(Pos(16, 1), cm.getCursor('head'));
 
-  // should switch to visualLine mode
+  // должен перейти в режим visualLine
   cm.setCursor(14, 0);
   helpers.doKeys('<Esc>', 'v', 'i', 'p');
   helpers.assertCursorAt(14, 0);
@@ -619,7 +619,7 @@ testVim('paragraph_motions', function(cm, vim, helpers) {
   helpers.doKeys('<Esc>', 'V', 'i', 'p');
   eqCursorPos(Pos(16, 1), cm.getCursor('head'));
 
-  // ap inside empty space
+  // ap внутри пустого пространства
   cm.setCursor(10, 0);
   helpers.doKeys('<Esc>', 'v', 'a', 'p');
   eqCursorPos(Pos(7, 0), cm.getCursor('anchor'));
@@ -654,7 +654,7 @@ testVim('paragraph_motions', function(cm, vim, helpers) {
   eq('b\na\na\nc\n', register.toString());
 }, { value: 'a\na\n\n\n\nb\nc\n\n\n\n\n\n\nd\n\ne\nf' });
 
-// Operator tests
+// Испытания оператора
 testVim('dl', function(cm, vim, helpers) {
   var curStart = makeCursor(0, 0);
   cm.setCursor(curStart);
@@ -765,8 +765,7 @@ testVim('dw_unicode_word', function(cm, vim, helpers) {
   eq(cm.getValue().length, 2);
 }, { value: '  \u0562\u0561\u0580\u0587\xbbe\xb5g  ' });
 testVim('dw_only_word', function(cm, vim, helpers) {
-  // Test that if there is only 1 word left, dw deletes till the end of the
-  // line.
+  // Проверьте, что если осталось только 1 слово, dw удаляет до конца строки.
   cm.setCursor(0, 1);
   helpers.doKeys('d', 'w');
   eq(' ', cm.getValue());
@@ -776,8 +775,8 @@ testVim('dw_only_word', function(cm, vim, helpers) {
   helpers.assertCursorAt(0, 0);
 }, { value: ' word1 ' });
 testVim('dw_eol', function(cm, vim, helpers) {
-  // Assert that dw does not delete the newline if last word to delete is at end
-  // of line.
+  // Убедитесь, что dw не удаляет новую строку, если последнее слово, которое нужно удалить, 
+  // находится в конце строки.
   cm.setCursor(0, 1);
   helpers.doKeys('d', 'w');
   eq(' \nword2', cm.getValue());
@@ -787,8 +786,8 @@ testVim('dw_eol', function(cm, vim, helpers) {
   helpers.assertCursorAt(0, 0);
 }, { value: ' word1\nword2' });
 testVim('dw_eol_with_multiple_newlines', function(cm, vim, helpers) {
-  // Assert that dw does not delete the newline if last word to delete is at end
-  // of line and it is followed by multiple newlines.
+  // Предположим, что dw не удаляет новую строку, если последнее слово, которое нужно удалить, 
+  // находится в конце строки, а за ним следуют несколько новых строк.
   cm.setCursor(0, 1);
   helpers.doKeys('d', 'w');
   eq(' \n\nword2', cm.getValue());
@@ -833,8 +832,8 @@ testVim('dw_end_of_document', function(cm, vim, helpers) {
   eq('\nab', cm.getValue());
 }, { value: '\nabc' });
 testVim('dw_repeat', function(cm, vim, helpers) {
-  // Assert that dw does delete newline if it should go to the next line, and
-  // that repeat works properly.
+  // Убедитесь, что dw действительно удаляет новую строку, если она должна перейти на следующую строку,
+  // и что повторение работает правильно.
   cm.setCursor(0, 1);
   helpers.doKeys('d', '2', 'w');
   eq(' ', cm.getValue());
@@ -891,10 +890,10 @@ testVim('db_start_of_document', function(cm, vim, helpers) {
 testVim('dge_empty_lines', function(cm, vim, helpers) {
   cm.setCursor(1, 0);
   helpers.doKeys('d', 'g', 'e');
-  // Note: In real VIM the result should be '', but it's not quite consistent,
-  // since 2 newlines are deleted. But in the similar case of word\n\n, only
-  // 1 newline is deleted. We'll diverge from VIM's behavior since it's much
-  // easier this way.
+  // Примечание: В реальном VIM результат должен быть '', но это не совсем соответствует, 
+  // т.к. удаляются 2 новые строки.
+  // Но в аналогичном случае слова\n\n, удаляется только 1 новая строка.
+  // Мы отклонимся от поведения VIM's, ведь так намного проще. 
   eq('\n', cm.getValue());
 }, { value: '\n\n' });
 testVim('dge_word_and_empty_lines', function(cm, vim, helpers) {
@@ -913,8 +912,7 @@ testVim('dge_start_of_document', function(cm, vim, helpers) {
   eq('bc\n', cm.getValue());
 }, { value: 'abc\n' });
 testVim('d_inclusive', function(cm, vim, helpers) {
-  // Assert that when inclusive is set, the character the cursor is on gets
-  // deleted too.
+  // Убедитесь, что при включении, символ, на котором находится курсор, тоже удаляется.
   var curStart = makeCursor(0, 1);
   cm.setCursor(curStart);
   helpers.doKeys('d', 'e');
@@ -925,7 +923,7 @@ testVim('d_inclusive', function(cm, vim, helpers) {
   eqCursorPos(curStart, cm.getCursor());
 }, { value: ' word1 ' });
 testVim('d_reverse', function(cm, vim, helpers) {
-  // Test that deleting in reverse works.
+  // Протестируйте удаление в обратном порядке.
   cm.setCursor(1, 0);
   helpers.doKeys('d', 'b');
   eq(' word2 ', cm.getValue());
@@ -998,11 +996,10 @@ testVim('dd_only_line', function(cm, vim, helpers) {
   var register = helpers.getRegisterController().getRegister();
   eq(expectedRegister, register.toString());
 }, { value: "thisistheonlyline" });
-// Yank commands should behave the exact same as d commands, expect that nothing
-// gets deleted.
+  // Команды Yank должны вести себя точно так же, как команды d, ожидать, что ничего не будет удалено.
 testVim('yw_repeat', function(cm, vim, helpers) {
-  // Assert that yw does yank newline if it should go to the next line, and
-  // that repeat works properly.
+  // Убедитесь, что yw делает yank newline, если он должен перейти на следующую строку,
+  // и что повторение работает правильно.
   var curStart = makeCursor(0, 1);
   cm.setCursor(curStart);
   helpers.doKeys('y', '2', 'w');
@@ -4550,28 +4547,28 @@ testVim('ex_special_names', function(cm, vim, helpers) {
       val=params.argString;
     });
     helpers.doEx(':'+name);
-    eq(ran,name,'Running ex-command failed');
+    eq(ran,name,'Не удалось выполнить экс-команду');
     helpers.doEx(':'+name+' x');
-    eq(val,' x','Running ex-command with param failed: '+name);
+    eq(val,' x','Не удалось выполнить ex-команду с параметром: '+name);
     if(/^\W+$/.test(name)){
       helpers.doEx(':'+name+'y');
-      eq(val,'y','Running ex-command with param failed: '+name);
+      eq(val,'y','Не удалось выполнить ex-команду с параметром: '+name);
     }
     else{
       helpers.doEx(':'+name+'-y');
-      eq(val,'-y','Running ex-command with param failed: '+name);
+      eq(val,'-y','Не удалось выполнить ex-команду с параметром: '+name);
     }
     if(name!=='!'){
       helpers.doEx(':'+name+'!');
-      eq(ran,name,'Running ex-command with bang failed');
-      eq(val,'!','Running ex-command with bang failed: '+name);
+      eq(ran,name,'Запуск ex-команды с треском провалился');
+      eq(val,'!','Запуск ex-команды с треском провалился: '+name);
       helpers.doEx(':'+name+'!z');
-      eq(ran,name,'Running ex-command with bang & param failed');
-      eq(val,'!z','Running ex-command with bang & param failed: '+name);
+      eq(ran,name,'Выполнение ex-команды с bang & param не удалось');
+      eq(val,'!z','Выполнение ex-команды с bang & param не удалось: '+name);
     }
   });
 });
-// For now, this test needs to be last because it messes up : for future tests.
+// На данный момент этот тест должен быть последним, потому что он не подходит: для будущих тестов.
 testVim('ex_map_key2key_from_colon', function(cm, vim, helpers) {
   helpers.doEx('map : x');
   helpers.doKeys(':');

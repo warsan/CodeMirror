@@ -4,45 +4,32 @@
 [![NPM version](https://img.shields.io/npm/v/codemirror.svg)](https://www.npmjs.org/package/codemirror)
 [![Join the chat at https://gitter.im/codemirror/CodeMirror](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/codemirror/CodeMirror)  
 
-CodeMirror is a versatile text editor implemented in JavaScript for
-the browser. It is specialized for editing code, and comes with over
-100 language modes and various addons that implement more advanced
-editing functionality. Every language comes with fully-featured code
-and syntax highlighting to help with reading and editing complex code.
+CodeMirror - это универсальный текстовый редактор, реализованный в JavaScript для браузера.  
+Он специализируется на редактировании кода и поставляется с более чем 100 языковыми режимами и различными дополнениями, 
+реализующими более продвинутый функционал редактирования.  
+Каждый язык поставляется с полнофункциональным кодом и подсветкой синтаксиса для помощи в чтении и редактировании сложного кода.
 
-A rich programming API and a CSS theming system are available for
-customizing CodeMirror to fit your application, and extending it with
-new functionality.
+Богатый API программирования и система CSS-темизации доступны для настройки CodeMirror в соответствии с вашим приложением и расширения его функциональности.
 
-You can find more information (and the
-[manual](https://codemirror.net/doc/manual.html)) on the [project
-page](https://codemirror.net). For questions and discussion, use the
-[discussion forum](https://discuss.codemirror.net/).
+Дополнительную информацию (и [руководство](https://codemirror.net/doc/manual.html)) можно найти на [проектной странице](https://codemirror.net).  
+Для вопросов и обсуждения используйте [дискуссионный форум](https://discuss.codemirror.net/).
 
-See
-[CONTRIBUTING.md](https://github.com/codemirror/CodeMirror/blob/master/CONTRIBUTING.md)
-for contributing guidelines.
+См. [CONTRIBUTING.md](https://github.com/codemirror/CodeMirror/blob/master/CONTRIBUTING.md) для ознакомления с руководящими принципами.
 
-The CodeMirror community aims to be welcoming to everybody. We use the
-[Contributor Covenant
-(1.1)](http://contributor-covenant.org/version/1/1/0/) as our code of
-conduct.
+Сообщество CodeMirror стремится быть гостеприимным ко всем. 
+Мы используем [Пакт участника (1.1)](http://contributor-covenant.org/version/1/1/0/) в качестве кодекса поведения.
 
-### Installation
+### Установка
 
-Either get the [zip file](https://codemirror.net/codemirror.zip) with
-the latest version, or make sure you have [Node](https://nodejs.org/)
-installed and run:
+Либо получите [zip-файл](https://codemirror.net/codemirror.zip) с последней версией, либо убедитесь, что у вас установлен и запущен [Node](https://nodejs.org/):
 
     npm install codemirror
 
-**NOTE**: This is the source repository for the library, and not the
-distribution channel. Cloning it is not the recommended way to install
-the library, and will in fact not work unless you also run the build
-step.
+**NOTE**: Это исходный репозиторий для библиотеки, а не канал распространения.  
+Клонирование не является рекомендуемым способом установки библиотеки, и фактически не будет работать, если вы не запустите этап сборки.
 
-### Quickstart
+### Быстрый запуск
 
-To build the project, make sure you have Node.js installed (at least version 6)
-and then `npm install`. To run, just open `index.html` in your
-browser (you don't need to run a webserver). Run the tests with `npm test`.
+Для сборки проекта убедитесь, что у вас установлен Node.js (по крайней мере, версия 6), а затем `npm install`.  
+To run, just open `index.html` in your browser (you don't need to run a webserver). Run the tests with `npm test`.  
+Для запуска просто откройте `index.html` в вашем браузере (вам не нужно запускать веб-сервер). Проведите тесты с `npm test`.

@@ -34,7 +34,7 @@
   }
 
   function argsToRanges(args) {
-    if (args.length % 4) throw new Error("Wrong number of arguments for ranges.");
+    if (args.length % 4) throw new Error("Неверное количество аргументов для диапазонов.");
     var ranges = [];
     for (var i = 0; i < args.length; i += 4)
       ranges.push({anchor: Pos(args[i], args[i + 1]),

@@ -45,7 +45,7 @@
       var completion = CodeMirror.hint.html(cm);
       if (!deepCompare(completion.list, spec.list))
         throw new Failure("Wrong completion results. Got" +
-          escapeHtmlList(completion) +" but expected" +
+          escapeHtmlList(completion) +" но ожидается" +
           escapeHtmlList(spec));
       eqCharPos(completion.from, spec.from,'from-failed');
       eqCharPos(completion.to, spec.to, 'to-failed');

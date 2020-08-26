@@ -89,7 +89,7 @@
       s +=   '<div class="cm-s-default">';
       s += 'expected:';
       s +=   prettyPrintOutputTable(expectedOutput, diff);
-      s += 'observed: [<a onclick="this.parentElement.className+=\' mt-state-unhide\'">display states</a>]';
+      s += 'observed: [<a onclick="this.parentElement.className+=\' mt-state-unhide\'">состояния дисплея</a>]';
       s +=   prettyPrintOutputTable(observedOutput, diff);
       s +=   '</div>';
       s += '</div>';
@@ -137,7 +137,7 @@
         for (var j = 0; j < 10 && stream.start >= stream.pos; j++)
           var compare = mode.token(stream, state);
         if (j == 10)
-          throw new Failure("Failed to advance the stream." + stream.string + " " + stream.pos);
+          throw new Failure("Не удалось продвинуть поток." + stream.string + " " + stream.pos);
         var substr = stream.current();
         if (compare && compare.indexOf(" ") > -1) compare = compare.split(' ').sort().join(' ');
         stream.start = stream.pos;
@@ -182,7 +182,7 @@
       s += '<td class="mt-style"><span>' + (output[i].style || null) + '</span></td>';
     }
     if(output[0].state) {
-      s += '</tr><tr class="mt-state-row" title="State AFTER each token">';
+      s += '</tr><tr class="mt-state-row" title="Состояние ПОСЛЕ каждого токена">';
       for (var i = 0; i < output.length; ++i) {
         s += '<td class="mt-state"><pre>' + esc(output[i].state) + '</pre></td>';
       }

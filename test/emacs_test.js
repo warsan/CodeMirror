@@ -19,7 +19,7 @@
     var code;
     for (var c in CodeMirror.keyNames)
       if (CodeMirror.keyNames[c] == key) { code = c; break; }
-    if (code == null) throw new Error("Unknown key: " + key);
+    if (code == null) throw new Error("Неизвестный ключ: " + key);
 
     return eventCache[keyName] = {
       type: "keydown", keyCode: code, ctrlKey: ctrl, shiftKey: shift, altKey: alt,

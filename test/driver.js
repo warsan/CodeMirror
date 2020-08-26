@@ -15,7 +15,7 @@ function test(name, run, expectedFail) {
   if (nameCounts[name] == undefined){
     nameCounts[name] = 2;
   } else { 
-    // Append number if not first test with this name.
+    // Добавить номер, если не первый тест с этим именем.
     name = name + '_' + (nameCounts[name]++);
   }
   // Add test

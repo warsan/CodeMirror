@@ -1,5 +1,5 @@
 (function() {
-  // A minilanguage for instantiating linked CodeMirror instances and Docs
+  // Мини-язык для инстанцирования связанных экземпляров CodeMirror и Docs.
   function instantiateSpec(spec, place, opts) {
     var names = {}, pos = 0, l = spec.length, editors = [];
     while (spec) {
@@ -40,7 +40,7 @@
     var end = arguments.length, msg = null;
     if (typeof arguments[end-1] == "string")
       msg = arguments[--end];
-    if (i == end) throw new Error("No editors provided to eqAll");
+    if (i == end) throw new Error("Никаких редакторов не предоставлено eqAll");
     for (var i = 1; i < end; ++i)
       eq(arguments[i].getValue(), val, msg)
   }
@@ -125,7 +125,7 @@
   testDoc("undoConflict", "A='ab\ncd\nef' B<~A", function(a, b) {
     a.replaceRange("x", Pos(0));
     a.replaceRange("z", Pos(2));
-    // This should clear the first undo event in a, but not the second
+    // Это должно прояснить первое событие отмены, но не второе.
     b.replaceRange("y", Pos(0));
     a.undo(); a.undo();
     eqAll("abxy\ncd\nef", a, b);
@@ -186,7 +186,7 @@
     eqAll("uvu", a, b, c, d, e);
   });
 
-  // A and B share a history, C and D share a separate one
+  // A и B делят историю, C и D - отдельную.
   testDoc("islands", "A='x\ny\nz' B<A C<~A D<C", function(a, b, c, d) {
     a.replaceRange("u", Pos(0));
     d.replaceRange("v", Pos(2));

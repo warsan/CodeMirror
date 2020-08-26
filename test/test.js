@@ -238,7 +238,7 @@ testCM("coordsChar", function(cm) {
 
 testCM("coordsCharBidi", function(cm) {
   addDoc(cm, 35, 70);
-  // Put an rtl character into each line to trigger the bidi code path in coordsChar
+  // Поместите символ rtl в каждую строку, чтобы вызвать путь кода bidi в coordsChar
   cm.setValue(cm.getValue().replace(/\bx/g, 'و'))
   for (var i = 0; i < 2; ++i) {
     var sys = i ? "local" : "page";
@@ -261,7 +261,7 @@ testCM("badBidiOptimization", function(cm) {
 
 testCM("posFromIndex", function(cm) {
   cm.setValue(
-    "This function should\n" +
+    "Эта функция должна быть\n" +
     "convert a zero based index\n" +
     "to line and ch."
   );
@@ -613,14 +613,14 @@ testCM("bookmarkCursor", function(cm) {
       new20 = cm.cursorCoords(Pos(2, 0)), new30 = cm.cursorCoords(Pos(3, 0));
   near(new01.left, pos01.left, 1);
   near(new01.top, pos01.top, 1);
-  is(new11.left > pos11.left, "at right, middle of line");
+  is(new11.left > pos11.left, "справа, в середине строки");
   near(new11.top == pos11.top, 1);
   near(new20.left, pos20.left, 1);
   near(new20.top, pos20.top, 1);
-  is(new30.left > pos30.left, "at right, empty line");
+  is(new30.left > pos30.left, "справа, пустая строка");
   near(new30.top, pos30, 1);
   cm.setBookmark(Pos(4, 0), {widget: document.createTextNode("→")});
-  is(cm.cursorCoords(Pos(4, 1)).left > pos41.left, "single-char bug");
+  is(cm.cursorCoords(Pos(4, 1)).left > pos41.left, "ошибка с одним символом");
 }, {value: "foo\nbar\n\n\nx\ny"});
 
 testCM("multiBookmarkCursor", function(cm) {
@@ -679,7 +679,7 @@ testCM("scrollSnap", function(cm) {
   cm.setCursor(Pos(100, 180));
   cm.setCursor(Pos(199, 0));
   info = cm.getScrollInfo();
-  is(info.left == 0 && info.top + 2 > info.height - cm.getScrollerElement().clientHeight, "scrolled clean to bottom");
+  is(info.left == 0 && info.top + 2 > info.height - cm.getScrollerElement().clientHeight, "прокручен до конца");
 });
 
 testCM("scrollIntoView", function(cm) {
@@ -907,7 +907,7 @@ testCM("clickFold", function(cm) { // Issue #5392
   cm.markText(Pos(0, 5), Pos(0, 10), {replacedWith: widget})
   var after = cm.charCoords(Pos(0, 10))
   var foundOn = cm.coordsChar({left: after.left - 1, top: after.top + 4})
-  is(foundOn.ch <= 5 || foundOn.ch >= 10, "Position is not inside the folded range")
+  is(foundOn.ch <= 5 || foundOn.ch >= 10, "Позиция не в свернутом диапазоне")
 })
 
 testCM("everythingFolded", function(cm) {
@@ -1065,7 +1065,7 @@ testCM("changedInlineWidget", function(cm) {
   var w = document.createElement("span");
   w.innerHTML = "x";
   var m = cm.markText(Pos(0, 4), Pos(0, 5), {replacedWith: w});
-  w.innerHTML = "and now the widget is really really long all of a sudden and a scrollbar is needed";
+  w.innerHTML = "и теперь виджет вдруг стал очень длинным, и нужна полоса прокрутки";
   m.changed();
   var hScroll = byClassName(cm.getWrapperElement(), "CodeMirror-hscrollbar")[0];
   is(hScroll.scrollWidth > hScroll.clientWidth);
@@ -1076,7 +1076,7 @@ testCM("changedBookmark", function(cm) {
   var w = document.createElement("span");
   w.innerHTML = "x";
   var m = cm.setBookmark(Pos(0, 4), {widget: w});
-  w.innerHTML = "and now the widget is really really long all of a sudden and a scrollbar is needed";
+  w.innerHTML = "и теперь виджет вдруг стал очень длинным, и нужна полоса прокрутки";
   m.changed();
   var hScroll = byClassName(cm.getWrapperElement(), "CodeMirror-hscrollbar")[0];
   is(hScroll.scrollWidth > hScroll.clientWidth);
@@ -1235,7 +1235,7 @@ testCM("moveVstuck", function(cm) {
   cm.setCursor(Pos(0, val.length - 1));
   cm.moveV(-1, "line");
   eqCursorPos(cm.getCursor(), Pos(0, 27, "before"));
-  is(cm.cursorCoords(null, "local").top < h0, "cursor is in first visual line");
+  is(cm.cursorCoords(null, "local").top < h0, "курсор в первой визуальной строке");
 }, {lineWrapping: true}, ie_lt8 || opera_lt10);
 
 testCM("collapseOnMove", function(cm) {
@@ -1437,7 +1437,7 @@ testCM("verticalMovementCommandsWrapping", function(cm) {
     if (cur.line == 1) eq(cur.ch, 5);
     if (cur.line == 2) { eq(cur.ch, 1); break; }
   }
-}, {value: "a very long line that wraps around somehow so that we can test cursor movement\nshortone\nk",
+}, {value: "очень длинная строка, которая каким-то образом оборачивается, чтобы мы могли проверить курсор movement\nshortone\nk",
     lineWrapping: true});
 
 testCM("verticalMovementCommandsSingleLine", function(cm) {
@@ -2499,8 +2499,8 @@ function testMoveBidi(str) {
         lineBreaks[i] = 'w';
       }
       if (!lineBreaks[i]) {
-        is(coords.left > prevCoords.left, "In step " + i + ", cursor didn't move right");
-        eq(coords.top, prevCoords.top, "In step " + i + ", cursor moved out of line");
+        is(coords.left > prevCoords.left, "На шаге " + i + ", курсор не двигался вправо");
+        eq(coords.top, prevCoords.top, "На шаге " + i + ", курсор переместился за пределы строки");
       } else {
         is(coords.left < prevCoords.left, i);
         is(coords.top > prevCoords.top, i);
@@ -2510,15 +2510,15 @@ function testMoveBidi(str) {
 
     cm.execCommand("goCharRight");
     coords = cm.cursorCoords();
-    eq(coords.left, prevCoords.left, "Moving " + steps + " steps right didn't reach the end");
-    eq(coords.top, prevCoords.top, "Moving " + steps + " steps right didn't reach the end");
+    eq(coords.left, prevCoords.left, "Перемещение " + steps + " шагов вправо не дошло до конца");
+    eq(coords.top, prevCoords.top, "Перемещение " + steps + " шагов вправо не дошло до конца");
 
     for(i = steps - 1; i >= 0; --i) {
       cm.execCommand("goCharLeft");
       coords = cm.cursorCoords();
       if (!(lineBreaks[i] == 'n' || lineBreaks[i + 1] == 'w')) {
-        is(coords.left < prevCoords.left, "In step " + i + ", cursor didn't move left");
-        eq(coords.top, prevCoords.top, "In step " + i + ", cursor is not at the same line anymore");
+        is(coords.left < prevCoords.left, "На шаге " + i + ", курсор не перемещался влево");
+        eq(coords.top, prevCoords.top, "На шаге " + i + ", курсор больше не находится в той же строке");
       } else {
         is(coords.left > prevCoords.left, i);
         is(coords.top < prevCoords.top, i);
@@ -2528,8 +2528,8 @@ function testMoveBidi(str) {
 
     cm.execCommand("goCharLeft");
     coords = cm.cursorCoords();
-    eq(coords.left, prevCoords.left, "Moving " + steps + " steps left didn't reach the beginning");
-    eq(coords.top, prevCoords.top, "Moving " + steps + " steps left didn't reach the beginning");
+    eq(coords.left, prevCoords.left, "Перемещение " + steps + " шагов влево не дошло до начала");
+    eq(coords.top, prevCoords.top, "Перемещение " + steps + " шагов влево не дошло до начала");
   }, {value: str, lineWrapping: true})
 };
 

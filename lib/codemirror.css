@@ -1,14 +1,14 @@
-/* BASICS */
+/* Основные */
 
 .CodeMirror {
-  /* Set height, width, borders, and global font properties here */
+  /* Установите здесь свойства высоты, ширины, границ и глобального шрифта. */
   font-family: monospace;
   height: 300px;
   color: black;
   direction: ltr;
 }
 
-/* PADDING */
+/* Заполнение */
 
 .CodeMirror-lines {
   padding: 4px 0; /* Vertical padding around content */
@@ -22,7 +22,7 @@
   background-color: white; /* The little square between H and V scrollbars */
 }
 
-/* GUTTER */
+/* ВОДОСТОК */
 
 .CodeMirror-gutters {
   border-right: 1px solid #ddd;
@@ -41,14 +41,14 @@
 .CodeMirror-guttermarker { color: black; }
 .CodeMirror-guttermarker-subtle { color: #999; }
 
-/* CURSOR */
+/* Курсор */
 
 .CodeMirror-cursor {
   border-left: 1px solid black;
   border-right: none;
   width: 0;
 }
-/* Shown when moving in bi-directional text */
+/* Показано при движении в двунаправленном тексте */
 .CodeMirror div.CodeMirror-secondarycursor {
   border-left: 1px solid silver;
 }
@@ -90,7 +90,7 @@
   100% {}
 }
 
-/* Can style cursor different in overwrite (non-insert) mode */
+/* Может стилизовать курсор по-разному в режиме перезаписи (без вставки) */
 .CodeMirror-overwrite .CodeMirror-cursor {}
 
 .cm-tab { display: inline-block; text-decoration: inherit; }
@@ -106,7 +106,7 @@
   position: absolute;
 }
 
-/* DEFAULT THEME */
+/* ТЕМА ПО УМОЛЧАНИЮ */
 
 .cm-s-default .cm-header {color: blue;}
 .cm-s-default .cm-quote {color: #090;}
@@ -144,7 +144,7 @@
 
 .CodeMirror-composing { border-bottom: 2px solid; }
 
-/* Default styles for common addons */
+/* Стили по умолчанию для общих аддонов */
 
 div.CodeMirror span.CodeMirror-matchingbracket {color: #0b0;}
 div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
@@ -153,8 +153,8 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
 
 /* STOP */
 
-/* The rest of this file contains styles related to the mechanics of
-   the editor. You probably shouldn't touch them. */
+/* Остальная часть этого файла содержит стили, связанные с механикой редактора. 
+   Тебе, наверное, не стоит их трогать. */
 
 .CodeMirror {
   position: relative;
@@ -163,13 +163,13 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
 }
 
 .CodeMirror-scroll {
-  overflow: scroll !important; /* Things will break if this is overridden */
-  /* 50px is the magic margin used to hide the element's real scrollbars */
-  /* See overflow: hidden in .CodeMirror */
+  overflow: scroll !important; /* Все сломается, если это будет перекрыто. */
+  /* 50px - это волшебное поле, используемое, чтобы скрыть настоящие полосы прокрутки элемента. */
+  /* Смотри переполнение: спрятан в .CodeMirror */
   margin-bottom: -50px; margin-right: -50px;
   padding-bottom: 50px;
   height: 100%;
-  outline: none; /* Prevent dragging from highlighting the element */
+  outline: none; /* Предотвращение перетаскивания при подсвечивании элемента */
   position: relative;
 }
 .CodeMirror-sizer {
@@ -177,9 +177,8 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
   border-right: 50px solid transparent;
 }
 
-/* The fake, visible scrollbars. Used to force redraw during scrolling
-   before actual scrolling happens, thus preventing shaking and
-   flickering artifacts. */
+/* Фальшивые, видимые свитки. Используется для принудительного перерисовывания во время прокрутки до того, 
+   как произойдет фактическая прокрутка, таким образом, предотвращая дрожание и мерцание артефактов. */
 .CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
   position: absolute;
   z-index: 6;
@@ -235,11 +234,11 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
 
 .CodeMirror-lines {
   cursor: text;
-  min-height: 1px; /* prevents collapsing before first draw */
+  min-height: 1px; /* предотвращает коллапс перед первой ничьей */
 }
 .CodeMirror pre.CodeMirror-line,
 .CodeMirror pre.CodeMirror-line-like {
-  /* Reset some styles that the rest of the page might have set */
+  /* Сброс некоторых стилей, которые могли быть установлены на остальной части страницы. */
   -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
   border-width: 0;
   background: transparent;
@@ -273,7 +272,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
 .CodeMirror-linewidget {
   position: relative;
   z-index: 2;
-  padding: 0.1px; /* Force widget margins to stay inside of the container */
+  padding: 0.1px; /* Форсировать поля виджетов, чтобы остаться внутри контейнера. */
 }
 
 .CodeMirror-widget {}
@@ -284,7 +283,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
   outline: none;
 }
 
-/* Force content-box sizing for the elements where we expect it */
+/* Размер содержимого-коробки силы для элементов, где мы его ожидаем */
 .CodeMirror-scroll,
 .CodeMirror-sizer,
 .CodeMirror-gutter,
@@ -332,18 +331,18 @@ div.CodeMirror-dragcursors {
   background-color: rgba(255, 255, 0, .4);
 }
 
-/* Used to force a border model for a node */
+/* Используется, чтобы заставить модель границы для узла */
 .cm-force-border { padding-right: .1px; }
 
 @media print {
-  /* Hide the cursor when printing */
+  /* Спрятать курсор при печати */
   .CodeMirror div.CodeMirror-cursors {
     visibility: hidden;
   }
 }
 
-/* See issue #2901 */
+/* См. вопрос #2901 */
 .cm-tab-wrap-hack:after { content: ''; }
 
-/* Help users use markselection to safely style text background */
+/* Помогите пользователям использовать выделение меток для безопасного стиля фона текста */
 span.CodeMirror-selectedtext { background: none; }

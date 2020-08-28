@@ -1,37 +1,37 @@
-## Welcome to GitHub Pages
+## Добро пожаловать на страницы GitHub
 
-You can use the [editor on GitHub](https://github.com/warsan/CodeMirror/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Вы можете использовать [редактор на GitHub](https://github.com/warsan/CodeMirror/edit/gh-pages/index.md) для поддержки и предварительного просмотра содержимого вашего сайта в файлах Markdown.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Всякий раз, когда вы совершаете коммит в этом репозитории, GitHub Pages запускает [Jekyll](https://jekyllrb.com/), чтобы восстановить страницы вашего сайта из содержимого файлов Markdown.
 
 ### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Markdown - это легкий и простой в использовании синтаксис для создания стиля письма. Она включает в себя конвенции для
 
 ```markdown
-Syntax highlighted code block
+Подсвеченный синтаксисом блок кода
 
 # Header 1
 ## Header 2
 ### Header 3
 
-- Bulleted
-- List
+- Маркированный
+- Список
 
-1. Numbered
-2. List
+1. Нумерованный
+2. Список
 
-**Bold** and _Italic_ and `Code` text
+**Жирный** или _Italic_ или `Code` текст
 
-[Link](url) and ![Image](src)
+[Link](url) или ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Для получения дополнительных сведений см. [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+### Jekyll Темы
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/warsan/CodeMirror/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Ваш сайт Pages будет использовать макет и стили из темы Jekyll, которую вы выбрали в [настройках репозитория](https://github.com/warsan/CodeMirror/settings). Имя этой темы сохранено в конфигурационном файле Jekyll `_config.yml`.
 
-### Support or Contact
+### Поддержка или Контакт
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Проблемы со Страницами? Ознакомьтесь с нашей [документацией](https://docs.github.com/categories/github-pages-basics/) или [свяжитесь со службой поддержки](https://github.com/contact) и мы поможем вам с этим разобраться.

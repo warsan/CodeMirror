@@ -30,6 +30,5 @@ CodeMirror - это универсальный текстовый редакто
 
 ### Быстрый запуск
 
-Для сборки проекта убедитесь, что у вас установлен Node.js (по крайней мере, версия 6), а затем `npm install`.  
-To run, just open `index.html` in your browser (you don't need to run a webserver). Run the tests with `npm test`.  
+Для сборки проекта убедитесь, что у вас установлен Node.js (по крайней мере, версия 6), а затем `npm install`.    
 Для запуска просто откройте `index.html` в вашем браузере (вам не нужно запускать веб-сервер). Проведите тесты с `npm test`.
